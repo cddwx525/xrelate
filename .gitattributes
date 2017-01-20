@@ -1,4 +1,4 @@
-/templates/admin/ linguist-vendored
-/static/admin/ linguist-vendored
+/templates/admin/** linguist-vendored
+/static/admin/** linguist-vendored
 
 #*.js linguist-language=Python

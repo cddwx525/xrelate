@@ -1,0 +1,125 @@
+*
+{
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+/* 未被访问的链接 */
+a:link
+{
+        /*
+        color: #00FFFF;
+        background-color: #000000;
+        */
+        color: blue;
+        text-decoration: none;
+}
+
+/* 鼠标指针移动到链接上 */
+a:hover
+{
+        /*
+        color: #00FFFF;
+        background-color: #000000;
+        */
+        color: blue;
+        text-decoration: underline;
+}
+
+/* 正在被点击的链接 */
+a:active
+{
+        /*
+        color: #00FFFF;
+        background-color: #000000;
+        */
+        color: blue;
+        text-decoration: underline;
+}
+
+/* 已被访问的链接 */
+a:visited
+{
+        /*
+        color: #00FFFF;
+        background-color: #000000;
+        */
+        color: blue;
+        text-decoration: none;
+}
+
+body
+{      
+    color: black;
+    background-color: white;
+    font-family: monospace;
+    font-size: 14px;
+        
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+}
+
+/*
+********************************************************************************
+Top
+********************************************************************************
+*/
+
+#top_menu ul
+{
+    list-style-type: none;
+}
+
+#top_menu ul li
+{
+    float: left;
+    margin-right: 5em;
+    /*
+    width: 10em;
+
+    height: 2em;
+    line-height: 2em;
+
+	padding-left: 5px;
+	padding-right: 5px;
+
+    text-align: center;
+    */
+}
+
+/*
+#top_menu ul li a
+{
+	display: block;
+	
+	color: green;
+	background-color: white;
+}
+
+#top_menu ul li a:hover,a:active
+{
+	background-color: #FF3300;
+}
+*/
+
+#clear
+{
+    clear: both;
+}
+
+/*
+********************************************************************************
+Content
+********************************************************************************
+*/
+#content
+{
+}
+
+#paper_information table
+{
+    table-layout: auto;
+    width: 100%
+}

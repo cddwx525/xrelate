@@ -1,0 +1,10 @@
+{% extends 'papers/base.html' %}
+
+{% block title%}Tag list{% endblock %}
+
+{% block content %}<div id="tag_list">
+<h2>Tags</h2>
+<ul>
+{% for tag in tags %}<li><a href="{% url 'papers:tag' tag.id %}">{{ tag.name }}</a></li>
+{% endfor %}</ul>
+</div>{% endblock %}

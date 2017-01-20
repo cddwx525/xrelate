@@ -1,0 +1,12 @@
+{% extends 'papers/base.html' %}
+
+{% block title %}Category-{{ category.name }}{% endblock %}
+
+{% block content %}<div id="literature_list">
+<h2>{{ category }}</h2>
+<ul>
+{% for paper in papers %}<li><a href="{% url 'papers:paper' paper.id %}">{{ paper.title }}</a><br />
+<span>{{ paper.author }}</span><br />
+<span>{{ paper.journal }}, {{ paper.year | date:"Y" }}, {{ paper.pages }}, {{ paper.volume }}</span></li>
+{% endfor %}</ul>
+</div>{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'papers/base.html' %}
+
+{% block title%}Paper-{{ paper.title }}{% endblock %}
+
+{% block content %}<div id="paper_information">
+<h2>Paper</h2>
+<table>
+<caption>{{ paper.title }}</caption>
+<col width="150px" />
+<col />
+<!--
+<tr>
+<td>id</td>
+<td>{{ paper.id }}</td>
+</tr>
+-->
+<tr>
+<td>file</td>
+<td>[pdf: {% if paper.paper_file %}<a href="{% url 'papers:get_paper_file' paper.id %}">pdf</a>{% else %}None{% endif %}] [bibtex: {% if paper.bib_file %}<a href="{% url 'papers:get_bib_file' paper.id %}">bibtex</a>{% else %}None{% endif %}]</td>
+</tr>
+<tr>
+<td>category</td>
+<td>{{ paper.category }}</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>{# {% for tag in paper.tag %} {{ tag.name }} {% endfor %} #}</td>
+</tr>
+<tr>
+<td>favorite</td>
+<td>{{ paper.favorite }}</td>
+</tr>
+<tr>
+<td>added date</td>
+<td>{{ paper.date | date:"Y-m-d H:i:s" }}</td>
+</tr>
+
+<!-- Paper meta infomation -->
+<tr>
+<td colspan="2"><hr /></td>
+</tr>
+<tr>
+<td>type</td>
+<td>{{ paper.bibtype }}</td>
+</tr>
+<tr>
+<td>bibtex cite</td>
+<td>{{ paper.bibcite }}</td>
+</tr>
+<tr>
+<td>title</td>
+<td>{{ paper.title }}</td>
+</tr>
+<tr>
+<td>author</td>
+<td>{{ paper.author }}</td>
+</tr>
+<tr>
+<td>organization</td>
+<td>{{ paper.organization }}</td>
+</tr>
+<tr>
+<td>year</td>
+<td>{{ paper.year | date:"Y" }}</td>
+</tr>
+<tr>
+<td>abstract</td>
+<td>{{ paper.abstract }}</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>{{ paper.keywords }}</td>
+</tr>
+<tr>
+<td>doi</td>
+<td>{{ paper.doi }}</td>
+</tr>
+<tr>
+<td>journal</td>
+<td>{{ paper.journal }}</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>{{ paper.volume }}</td>
+</tr>
+<tr>
+<td>number</td>
+<td>{{ paper.number }}</td>
+</tr>
+<tr>
+<td>pages</td>
+<td>{{ paper.pages }}</td>
+</tr>
+</table>
+</div>
+
+<div id="relatations">
+<h2>References(papers which are cited by this paper)</h2>
+{% if references_relations %}<ul>
+{% for references_relation in references_relations %}<li><span>[{{ references_relation.cite_number }}] </span><a href="{% url 'papers:paper' references_relation.reference.id %}">{{ references_relation.reference.title }}</a><br/>
+<span>{{ references_relation.reference.author }}</span><br />
+<span>{{ references_relation.reference.journal }}, {{ references_relation.reference.year | date:"Y" }}, {{ references_relation.reference.pages }}, {{ references_relation.reference.volume }}</span></li>
+{% endfor %}</ul>{% else %}<p>No references are available.</p>{% endif %}
+
+<h2>Citers(papers which cite this paper)</h2>
+{% if citers %}<ul>
+{% for citer in citers %}<li><span>{{ citer.year | date:"Y"}} </span><a href="{% url 'papers:paper' citer.id %}">{{ citer.title }}</a><br />
+<span>{{ citer.author }}</span><br />
+<span>{{ citer.journal }}, {{citer.year | date:"Y" }}, {{ citer.pages }}, {{ citer.volume }}</span></li>
+{% endfor %}</ul>{% else %}<p>No citers are available.</p>{% endif %}
+
+<!--
+<h2>Cociters(papers with which this paper cite a same paper.)</h2>
+<ul>
+<li>{{ paper_entry }}</li>
+</ul>
+-->
+
+<!--
+<h2>Coreferences(papers together with which this paper was cited by a paper)</h2>
+<ul>
+<li>{{ paper_entry }}</li>
+</ul>
+-->
+</div>{% endblock %}

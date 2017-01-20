@@ -1,0 +1,14 @@
+{% extends 'papers/base.html' %}
+
+{% block title%}Category list{% endblock %}
+
+{% block content %}<div id="category_list">
+<h2>Categories</h2>
+<ul>
+{% for category in categories %}<li><a href="{% url 'papers:category' category.id %}">{{ category.name }}</a></li>
+{% endfor %}</ul>
+</div>
+
+<div id="category_level">
+{{ category_level }}
+</div>{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'papers/base.html' %}
+
+{% block title%}Home{% endblock %}
+
+{% block content %}<!--
+<h2>Current paper number</h2>
+<p>{{ number_of_lieriture }}</p>
+-->
+<h2>Latest papers</h2>
+{% if latest_paper_list %}<ul>
+{% for paper in latest_paper_list %}<li><a href="{% url 'papers:paper' paper.id %}">{{ paper.title }}</a><br />
+<span>{{ paper.author }}</span><br />
+<span>{{ paper.journal }}, {{ paper.year | date:"Y" }}, {{ paper.pages }}, {{ paper.volume }}</span></li>
+{% endfor %}</ul>{% else %}<p>No papers are available.</p>{% endif %}{% endblock %}
